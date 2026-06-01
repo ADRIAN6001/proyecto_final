@@ -7,7 +7,6 @@ name_licor=(input("·····INGRESE EL NOMBRE DE SU LICORERIA·········
 def inventario():
     print("INVENTARIO DE TU LICORERIA")
     cantidad=int(input("...INGRESE EL CODIGO DEL PRODUCTO....."))
-    if 
 
 def registro1():
     print("""......INGRESE UNA OPCION 
