@@ -100,7 +100,7 @@ def inicio():
 while True:
     print(""".......BIENVENIDO A ALCHOLIC.INC........
             .....SELECCIONE UNA OPCION........
-                1.registro
+                1.registro de usuario
                 2.inicio de sesion
                 3.salir""")
     opc=int(input(".....INGRESE UNA OPCION....."))
