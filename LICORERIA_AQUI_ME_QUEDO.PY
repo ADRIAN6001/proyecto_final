@@ -1,10 +1,65 @@
+#diccionario donde se guardan los usuarios registrados
 usuarios_registrados={}
+#diccionario donde se guardan los productos registrados
+licores_registrados={}
 name_licor=(input("·····INGRESE EL NOMBRE DE SU LICORERIA··········"))
+#REGISTRO DE PRODUCTO
+def registro1():
+    print("""......INGRESE UNA OPCION 
+          1.REGISTRAR PRODUCTO.
+          2.VOLVER""")
+    opcional=int(input("......INGRESE UNA OPCION......"))
+    if opcional==1:
+        una()
+    elif opcional==2:
+         menu_tho()
+    else:
+         print(".....OPCION INVALIDA.........")
+#REGISTRO DE PRODUCTOS DE VENTA
+def una():
+    print("......REGISTRO DE PRODUCTOS DE VENTA.......")
+    name=(input(".....INGRESE EL NOMBRES DEL PRODUCTO A REGISTRAR...."))
+    codigo=int(input(".....INGRESE EL CODIGO DEL PRODUCTO...."))
+    precio=int(input("......INGRESE EL PRECIO DEL PRODUCTO........."))
+    licores_registrados[codigo]={"nombre":name,"precio":precio}
+    print("producto ",name,"con el codigo",codigo,"y el preciio",precio,
+        "registrado con exito")
+    print("""...SELECCIONE UNA OPCION.....
+              1.SEGUIR REGISTRANDO 
+              2.VOLVER AL MENU """)
+    opcuna=int(input("...INGRESE UNA OPCION...."))
+    if opcuna==1:
+        una()
+    elif opcuna==2:
+        menu_tho()
+    else:
+         print("opcion invalida")
+#VENTAS
+def ventas():
+    codigo=int(input(".....INGRESE EL CODIGO DEL PRODUCTO A VENDER..."))
+    producto=licores_registrados[codigo]
+    if codigo in licores_registrados:
+         print(f"producto encontrado:{producto['nombre']} precio:{producto['precio']}")
+         num=int(input(".....ingrese cuntos productos va a vender......"))
+         costo=num*producto['precio']
+         print(".......EL COSTO TOTAL DEL PRODUCTO SERA DE :",costo,"BS") 
+         print("....VENTA EXITOSA TENGA UN BUEN DIA:")          
+#MENU2
+def menu_tho():
+    print("""INGRESE UNA OPCION
+            1.VENTAS
+            2.REGISTRO DE PRODUCTOS
+            3.REGISTRO DE INVENTARIO""")
+    elec=int(input("ingrese una opcion"))
+    if elec==1:
+        ventas()
+    elif elec==2:
+         registro1()
+#REGISTRO DE USUARIO      
 def registro():
-#registro
     print("········BIENVENIDO AL SISTEMA ALCOLIC.INT······")
     name_licor=(input("·····INGRESE EL NOMBRE DE SU LICORERIA··········"))
-    usu=(input("····INGRESE EL NOMBRE DEL USUARIO·········"))
+    usu=(input("····INGRESE EL NOMBRE DEL USUARIO·········".strip()))
     print("···BIENVENIDO",usu.upper())
     con=1
     while con<=3:
@@ -27,6 +82,7 @@ def inicio():
         v=input(".........INGRESE SU CONTRASEÑA........")
         if t in usuarios_registrados and usuarios_registrados[t]==v:
             print("....INICIO DE SESIÓN CORRECTA,SEA BIENVENIDO",t.upper(),"A",name_licor.upper())
+            menu_tho()
             break
         else:
             print("...USUARIO O CONTRASEÑA INCORRECTA .....")
@@ -48,3 +104,4 @@ while True:
         break
     else:
         print("......OPCION INVALIDA VUELVA INTENTARLO.......")
+
