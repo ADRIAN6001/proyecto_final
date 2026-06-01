@@ -3,7 +3,12 @@ usuarios_registrados={}
 #diccionario donde se guardan los productos registrados
 licores_registrados={}
 name_licor=(input("·····INGRESE EL NOMBRE DE SU LICORERIA··········"))
-#REGISTRO DE PRODUCTO
+#INVENTARIO
+def inventario():
+    print("INVENTARIO DE TU LICORERIA")
+    cantidad=int(input("...INGRESE EL CODIGO DEL PRODUCTO....."))
+    if 
+
 def registro1():
     print("""......INGRESE UNA OPCION 
           1.REGISTRAR PRODUCTO.
@@ -39,7 +44,7 @@ def ventas():
     codigo=int(input(".....INGRESE EL CODIGO DEL PRODUCTO A VENDER..."))
     producto=licores_registrados[codigo]
     if codigo in licores_registrados:
-         print(f"producto encontrado:{producto['nombre']} precio:{producto['precio']}")
+         print(f"producto encontrado:{producto['nombre']}{producto['precio']}")
          num=int(input(".....ingrese cuntos productos va a vender......"))
          costo=num*producto['precio']
          print(".......EL COSTO TOTAL DEL PRODUCTO SERA DE :",costo,"BS") 
@@ -55,6 +60,10 @@ def menu_tho():
         ventas()
     elif elec==2:
          registro1()
+    elif elec==3:
+        inventario()
+    else:
+        print("...OPCION INVALIDA....")
 #REGISTRO DE USUARIO      
 def registro():
     print("········BIENVENIDO AL SISTEMA ALCOLIC.INT······")
@@ -83,6 +92,7 @@ def inicio():
         if t in usuarios_registrados and usuarios_registrados[t]==v:
             print("....INICIO DE SESIÓN CORRECTA,SEA BIENVENIDO",t.upper(),"A",name_licor.upper())
             menu_tho()
+
             break
         else:
             print("...USUARIO O CONTRASEÑA INCORRECTA .....")
