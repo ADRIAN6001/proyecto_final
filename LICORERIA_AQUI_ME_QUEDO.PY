@@ -3,14 +3,23 @@ usuarios_registrados={}
 #diccionario donde se guardan los productos registrados
 licores_registrados={}
 name_licor=(input("·····INGRESE EL NOMBRE DE SU LICORERIA··········"))
+#FACTURAS
+def facturas():
+    nit=int(input("...INGRESE NIT-CI"))
+    
+
+    
 #INVENTARIO
 def inventario():
     print("INVENTARIO DE TU LICORERIA")
     cantidad=int(input("...INGRESE EL CODIGO DEL PRODUCTO....."))
+   
+    if cantidad in licores_registrados:
+        print(licores_registrados)
 
 def registro1():
     print("""......INGRESE UNA OPCION 
-          1.REGISTRAR PRODUCTO.
+          1.REGISTRAR PRODUCTO
           2.VOLVER""")
     opcional=int(input("......INGRESE UNA OPCION......"))
     if opcional==1:
@@ -22,9 +31,24 @@ def registro1():
 #REGISTRO DE PRODUCTOS DE VENTA
 def una():
     print("......REGISTRO DE PRODUCTOS DE VENTA.......")
+    
     name=(input(".....INGRESE EL NOMBRES DEL PRODUCTO A REGISTRAR...."))
-    codigo=int(input(".....INGRESE EL CODIGO DEL PRODUCTO...."))
-    precio=int(input("......INGRESE EL PRECIO DEL PRODUCTO........."))
+    while True:
+        codigo=input(".....INGRESE EL CODIGO DEL PRODUCTO....")
+        if codigo.isdigit():
+            codigo=int(codigo)
+            print("codigo valido")
+            break
+        else:
+            print("codigo invalido") 
+    while True:           
+        precio=input("......INGRESE EL PRECIO DEL PRODUCTO.........")
+        if precio.isdigit():
+            precio=int(precio)
+            print("codigo valido")
+            break
+        else:
+            print("codigo invalido")
     licores_registrados[codigo]={"nombre":name,"precio":precio}
     print("producto ",name,"con el codigo",codigo,"y el preciio",precio,
         "registrado con exito")
@@ -43,11 +67,23 @@ def ventas():
     codigo=int(input(".....INGRESE EL CODIGO DEL PRODUCTO A VENDER..."))
     producto=licores_registrados[codigo]
     if codigo in licores_registrados:
-         print(f"producto encontrado:{producto['nombre']}{producto['precio']}")
-         num=int(input(".....ingrese cuntos productos va a vender......"))
+         print(f"producto encontrado:{producto['nombre']}  {producto['precio']},bs.")
+         num=int(input(".....ingrese cuntos productos desea  vender......"))
          costo=num*producto['precio']
-         print(".......EL COSTO TOTAL DEL PRODUCTO SERA DE :",costo,"BS") 
-         print("....VENTA EXITOSA TENGA UN BUEN DIA:")          
+         print(".......EL COSTO TOTAL DE LOS PRODUCTO SERA DE :",costo,"BS") 
+         print("""....VENTA EXITOSA TENGA UN BUEN DIA:)""")
+         print("""DESEA IMPRIMIR UNA FACTURA 
+               1.SI
+               2NO""")
+         opt=int(input("..SELECCIONE UNA OPCION"))
+         if opt==1:
+             facturas()
+         elif opt==2: 
+             print("..GRACIAS POR SU COMPRA..")
+             ventas() 
+         else:
+            print("OPCION INVALIDA")
+                       
 #MENU2
 def menu_tho():
     print("""INGRESE UNA OPCION
@@ -91,7 +127,6 @@ def inicio():
         if t in usuarios_registrados and usuarios_registrados[t]==v:
             print("....INICIO DE SESIÓN CORRECTA,SEA BIENVENIDO",t.upper(),"A",name_licor.upper())
             menu_tho()
-
             break
         else:
             print("...USUARIO O CONTRASEÑA INCORRECTA .....")
@@ -113,4 +148,5 @@ while True:
         break
     else:
         print("......OPCION INVALIDA VUELVA INTENTARLO.......")
+
 
